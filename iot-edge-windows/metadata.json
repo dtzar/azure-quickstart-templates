@@ -1,11 +1,11 @@
 {
   "$schema": "https://aka.ms/azure-quickstart-templates-metadata-schema#",
   "type": "QuickStart",
-  "itemDisplayName": "Install a file on a Windows VM",
-  "description": "This template allows you to deploy a Windows VM and run a custom PowerShell script to install a file on that VM.",
-  "summary": "Deploys a Windows VM and install a file on that VM using the Custom Script Extension",
-  "githubUsername": "bmoore-msft",
-  "dateUpdated": "2016-11-08"
+  "itemDisplayName": "Create an IoT Edge device on a Windows VM",
+  "description": "Deploys Windows Server 2019 Datacenter with Containers and automatically creates an IoT Edge device agent and connects with its pre-existing device twin in IoT Hub",
+  "summary": "Windows Server VM with IoT Edge Device connected to IoT Hub",
+  "githubUsername": "dtzar",
+  "dateUpdated": "2019-02-04"
 }
 
 
