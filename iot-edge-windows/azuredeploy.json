@@ -23,16 +23,9 @@
     },
     "fileUri": {
       "type": "string",
-      "defaultValue": "https://raw.githubusercontent.com/Azure/iotedge/1.0.6-rc1/scripts/windows/setup/IotEdgeSecurityDaemon.ps1",
+      "defaultValue": "https://raw.githubusercontent.com/Azure/iotedge/1.0.6/scripts/windows/setup/IotEdgeSecurityDaemon.ps1",
       "metadata": {
         "description": "File URI for the PowerShell script."
-      }
-    },
-    "fileName": {
-      "type": "string",
-      "defaultValue": "IotEdgeSecurityDaemon.ps1",
-      "metadata": {
-        "description": "Name of the PowerShell Script in the fileUri."
       }
     },
     "IoTHubEdgeDeviceCS": {
@@ -53,7 +46,8 @@
     "virtualNetworkName": "MyVNET",
     "publicIPAddressName": "IoTEdgeWinVmIP",
     "dnsNameForPublicIP": "[uniqueString(resourceGroup().id)]",
-    "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File', parameters('fileUri'), parameters('IoTHubEdgeDeviceCS'))]"
+    "commandToExecute": "[concat('PowerShell -ExecutionPolicy Unrestricted -encodedCommand ', variables('encodedPowerShell'))]",
+    "encodedPowerShell": "[base64(concat('. {Invoke-WebRequest -useb ', parameters('fileUri'), '} | Invoke-Expression; Install-SecurityDaemon -Manual -ContainerOs Windows -DeviceConnectionString ', parameters('IoTHubEdgeDeviceCS')))]"
   },
   "resources": [
     {
